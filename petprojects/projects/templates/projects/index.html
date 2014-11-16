@@ -1,0 +1,42 @@
+<html>
+<head>
+<!--<link rel="stylesheet" type="text/css" href="index.css">-->
+<style type="text/css">
+h2 {
+	padding-left:1em;
+}
+h3 {
+	padding-left:2em;
+}
+fieldset {
+	display: inline-block;
+}
+div {
+	padding-left:3em;
+}
+</style>
+</head>
+<body>
+<h1>Paul's Pet Projects</h1>
+<a href="/projects/addproject">Add Project</a>
+{% for catagory, key in catagories.items %}
+	<h2>{{ catagory.name }} projects</h2>
+	<h3>{{ catagory.description }}</h3>
+	{{ catagories.catagory }}
+	{% for project in key %}
+		<div>
+			<fieldset>
+				{% for namekey,namevalue in htmlnames.items %}
+					|{{ namekey }}|{{ project.name }}|<br>
+					{% if namekey == project.name %}
+				<legend><a href="/projects/{{ namevalue }}">{{ project.name }}</a></legend>
+					{% endif %}
+				{% endfor %}
+
+			{{ project.description }}
+			</fieldset>
+		</div><br>
+	{% endfor %}
+{% endfor %}
+</body>
+</html>
